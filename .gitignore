@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.env.*
+
+# Node
+node_modules/
+dist/
+
+# Logs / local DB
+*.log
+*.sqlite
+*.sqlite3
+*.db
+
+# Editor
+.vscode/
+.idea/
+
+# Vite cache
+.vite/
+
+# Testing / Python tooling
+.pytest_cache/
+.coverage
