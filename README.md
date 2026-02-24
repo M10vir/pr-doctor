@@ -107,9 +107,6 @@ flowchart TB
 
     UI[React + Vite Frontend] --> API
 
-
-⸻
-
 Azure Deployment Diagram (Runtime Architecture)
 
 flowchart TB
@@ -136,7 +133,7 @@ flowchart TB
     Backend --> GitHub
     Backend --> Logs
     ACR --> Backend
-
+```
 
 ⸻
 
@@ -285,32 +282,11 @@ Frontend (frontend/package.json)
 
 ⸻
 
-Hackathon Alignment (AI Dev Days)
-
-PR Doctor aligns with the AI Dev Days Hackathon by demonstrating an agentic DevOps workflow:
-	•	AI-style agent behavior for PR review + patching
-	•	GitHub-centric developer workflow
-	•	Azure deployment-ready architecture
-	•	Public GitHub repos and reproducible demo flow
-
 Core Requirement Alignment
 	•	✅ Hero technologies theme alignment: Agentic DevOps workflow
 	•	✅ Azure deployment: Backend deployable on Azure Container Apps
 	•	✅ GitHub-based development: Public repo + PR-based demo workflow
 	•	✅ Copilot-friendly implementation path: Codebase structured for VS Code + GitHub workflow
-
-⸻
-
-Demo Script (2 Minutes)
-	1.	Open demo repo PR (bad PR) and show unsafe code
-	2.	In PR Doctor UI or API:
-	•	Create run
-	•	Analyze PR
-	3.	Show findings (secret, debug log, SQL injection, missing tests)
-	4.	Generate patch and display unified diff
-	5.	Post review comment to the original PR
-	6.	Open auto-fix PR and show generated changes
-	7.	Close with impact: “This reduces review latency and catches common risks before merge.”
 
 ⸻
 
@@ -354,7 +330,6 @@ MIT (recommended)
 Final Note
 
 PR Doctor is designed as a practical, real-world developer productivity and code safety assistant.
-The current version proves the end-to-end agent workflow and is ready for hackathon demo expansion.
 
 Thank you for helping make PR Doctor better.
 
