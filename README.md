@@ -106,9 +106,9 @@ flowchart TB
     GHT --> FIX[Open Auto-Fix PR]
 
     UI[React + Vite Frontend] --> API
-
+```
 Azure Deployment Diagram (Runtime Architecture)
-
+```mermaid
 flowchart TB
     subgraph Azure["Microsoft Azure"]
         subgraph ACA["Azure Container Apps"]
@@ -135,7 +135,7 @@ flowchart TB
     ACR --> Backend
 ```
 
-⸻
+---
 
 Local Run
 
@@ -161,7 +161,7 @@ python -m uvicorn app.main:app --reload --port 8000
 curl -s http://localhost:8000/health
 
 
-⸻
+---
 
 Frontend (React + Vite)
 
@@ -175,8 +175,7 @@ cd frontend
 npm install
 npm run dev
 
-
-⸻
+---
 
 Azure Deploy (Backend) — Azure Container Apps
 
@@ -239,8 +238,7 @@ az containerapp update \
 
 curl -i -L $API_URL/health
 
-
-⸻
+---
 
 Frontend Deploy (Recommended) — Azure Static Web Apps
 
@@ -250,7 +248,7 @@ Deploy frontend/ to Azure Static Web Apps and set:
 Then update backend CORS:
 	•	ALLOWED_ORIGINS=https://<your-frontend-domain>,http://localhost:5173,http://localhost:4173
 
-⸻
+---
 
 API Endpoints
 	•	GET /health
@@ -262,7 +260,7 @@ API Endpoints
 	•	POST /comment-review
 	•	POST /open-fix-pr
 
-⸻
+---
 
 Requirements
 
@@ -280,7 +278,7 @@ Frontend (frontend/package.json)
 	•	Vite ^7.3.1
 	•	TailwindCSS ^3.4.17
 
-⸻
+---
 
 Core Requirement Alignment
 	•	✅ Hero technologies theme alignment: Agentic DevOps workflow
@@ -288,14 +286,14 @@ Core Requirement Alignment
 	•	✅ GitHub-based development: Public repo + PR-based demo workflow
 	•	✅ Copilot-friendly implementation path: Codebase structured for VS Code + GitHub workflow
 
-⸻
+---
 
 Current Limitations (Transparent Notes)
 	•	Reviewer is currently heuristics-based (baseline), not LLM-powered yet
 	•	Patch generation is demo-safe for targeted patterns
 	•	Language/framework-specific patching can be expanded in future versions
 
-⸻
+---
 
 Roadmap (Next Improvements)
 	•	LLM-based reviewer for higher precision
@@ -305,27 +303,27 @@ Roadmap (Next Improvements)
 	•	Role-based dashboards for team triage
 	•	CI/CD integration (GitHub Actions / Azure DevOps)
 
-⸻
+---
 
 Security Notes
 	•	Never commit backend/.env
 	•	Use Azure Container App secrets for GITHUB_TOKEN
 	•	Rotate tokens immediately if exposed in any PR or commit
 
-⸻
+---
 
 Contributing
 
 This project was built as a hackathon prototype. Feedback, issues, and improvements are welcome.
 	•	LinkedIn: https://www.linkedin.com/in/mohammed10vir
 
-⸻
+---
 
 License
 
 MIT (recommended)
 
-⸻
+---
 
 Final Note
 
