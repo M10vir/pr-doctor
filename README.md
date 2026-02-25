@@ -3,7 +3,7 @@
 PR Doctor is an **Agentic DevOps assistant** that helps developers and teams review GitHub Pull Requests faster and safer. It automates the analysis of high-risk patterns and proactively suggests fixes.
 
 <p align="center">
-  <img src="https://googleusercontent.com/image_generation_content/14" alt="PR Doctor Banner" width="100%">
+  <img src="docs/AI_Dev_Days_Hackathon-Banner.png" alt="PR Doctor Banner" width="100%">
 </p>
 
 <p align="center">
@@ -143,4 +143,5 @@ az containerapp secret set -n pr-doctor-api -g pr-doctor-rg --secrets github-tok
 ## 🛡 License & Contributing
 This project is licensed under the **MIT License**.
 Built with 🩺 for the DevOps community.
+
 **LinkedIn:** [Mohammed10vir](https://www.linkedin.com/in/mohammed10vir)
