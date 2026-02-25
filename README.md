@@ -53,37 +53,40 @@ flowchart TB
 
 ### **Azure Runtime Architecture**
 ```mermaid
-flowchart TD
-    %% Title
+flowchart LR
     subgraph Azure["Microsoft Azure Cloud"]
         direction TB
         
-        subgraph SWA["Azure Static Web Apps"]
+        subgraph SWA["Frontend Hosting"]
             Frontend["React + Vite Frontend"]
         end
 
-        subgraph ACR["Azure Container Registry"]
+        subgraph ACR["Container Registry"]
             Images["Backend Container Image"]
         end
 
-        subgraph ACA["Azure Container Apps"]
+        subgraph ACA["Core Logic"]
             Backend["PR Doctor Backend (FastAPI)"]
         end
 
-        subgraph LAW["Azure Log Analytics"]
+        subgraph LAW["Monitoring"]
             Logs["Diagnostics + Metrics"]
         end
     end
 
-    %% External Systems
-    GitHub["GitHub Repos + PRs"]
+    %% External System
+    GitHub[("GitHub Repos + PRs")]
 
-    %% Connections
+    %% Optimized Connections
     Frontend -->|API Requests| Backend
-    ACR -->|Image Pull| Backend
-    Backend -->|Push Analysis| GitHub
-    GitHub -->|Webhooks/Data| Backend
+    ACR -.->|Image Pull| Backend
+    Backend ===>|Push Analysis| GitHub
+    GitHub -.->|Webhooks/Data| Backend
     Backend -->|Stream Logs| Logs
+
+    %% Styling for clarity
+    style GitHub fill:#181717,color:#fff,stroke:#333
+    style Azure fill:#f0f8ff,stroke:#0078D4,stroke-width:2px
 ```
 ---
 
