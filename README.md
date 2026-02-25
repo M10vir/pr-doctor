@@ -55,38 +55,40 @@ flowchart TB
 ```mermaid
 flowchart LR
     subgraph Azure["Microsoft Azure Cloud"]
-        direction TB
+        direction LR
         
-        subgraph SWA["Frontend Hosting"]
-            Frontend["React + Vite Frontend"]
+        subgraph Ingress["Frontend & Registry"]
+            direction TB
+            SWA["React + Vite Frontend"]
+            ACR["Backend Container Image"]
         end
 
-        subgraph ACR["Container Registry"]
-            Images["Backend Container Image"]
-        end
-
-        subgraph ACA["Core Logic"]
+        subgraph Core["Core Logic"]
             Backend["PR Doctor Backend (FastAPI)"]
         end
 
-        subgraph LAW["Monitoring"]
-            Logs["Diagnostics + Metrics"]
+        subgraph Ops["Monitoring"]
+            LAW["Diagnostics + Metrics"]
         end
     end
 
     %% External System
     GitHub[("GitHub Repos + PRs")]
 
-    %% Optimized Connections
-    Frontend -->|API Requests| Backend
+    %% Straightened Connections
+    SWA --->|API Requests| Backend
     ACR -.->|Image Pull| Backend
-    Backend ===>|Push Analysis| GitHub
+    
+    %% Bidirectional logic separated for clarity
+    Backend ==>|Push Analysis| GitHub
     GitHub -.->|Webhooks/Data| Backend
-    Backend -->|Stream Logs| Logs
+    
+    Backend --->|Stream Logs| LAW
 
-    %% Styling for clarity
-    style GitHub fill:#181717,color:#fff,stroke:#333
-    style Azure fill:#f0f8ff,stroke:#0078D4,stroke-width:2px
+    %% Professional Styling
+    style GitHub fill:#181717,color:#fff,stroke:#00D1B2,stroke-width:2px
+    style Azure fill:#0A1A2F,color:#fff,stroke:#0078D4,stroke-width:2px
+    style Backend fill:#1e293b,color:#00D1B2,stroke:#00D1B2
 ```
 ---
 
