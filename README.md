@@ -53,28 +53,38 @@ flowchart TB
 
 ### **Azure Runtime Architecture**
 ```mermaid
-flowchart TB
-    subgraph Azure["Microsoft Azure"]
-        subgraph ACA["Azure Container Apps"]
-            Backend[PR Doctor Backend<br/>FastAPI Container]
-        end
+flowchart TD
+    %% Title
+    subgraph Azure["Microsoft Azure Cloud"]
+        direction TB
+        
         subgraph SWA["Azure Static Web Apps"]
-            Frontend[React + Vite Frontend]
+            Frontend["React + Vite Frontend"]
         end
+
         subgraph ACR["Azure Container Registry"]
-            Images[Backend Container Image]
+            Images["Backend Container Image"]
         end
-        subgraph LAW["Log Analytics Workspace"]
-            Logs[Diagnostics + Metrics]
+
+        subgraph ACA["Azure Container Apps"]
+            Backend["PR Doctor Backend (FastAPI)"]
+        end
+
+        subgraph LAW["Azure Log Analytics"]
+            Logs["Diagnostics + Metrics"]
         end
     end
-    GitHub[GitHub Repos + PRs] --> Backend
-    Frontend --> Backend
-    Backend --> GitHub
-    Backend --> Logs
-    ACR --> Backend
-```
 
+    %% External Systems
+    GitHub["GitHub Repos + PRs"]
+
+    %% Connections
+    Frontend -->|API Requests| Backend
+    ACR -->|Image Pull| Backend
+    Backend -->|Push Analysis| GitHub
+    GitHub -->|Webhooks/Data| Backend
+    Backend -->|Stream Logs| Logs
+```
 ---
 
 ## 💻 Local Setup
