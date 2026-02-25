@@ -242,79 +242,79 @@ curl -i -L $API_URL/health
 Frontend Deploy (Recommended) — Azure Static Web Apps
 
 Deploy frontend/ to Azure Static Web Apps and set:
-	•	VITE_API_BASE=https://<your-container-app-fqdn>
+•	VITE_API_BASE=https://<your-container-app-fqdn>
 
 Then update backend CORS:
-	•	ALLOWED_ORIGINS=https://<your-frontend-domain>,http://localhost:5173,http://localhost:4173
+•	ALLOWED_ORIGINS=https://<your-frontend-domain>,http://localhost:5173,http://localhost:4173
 
 ⸻
 
 API Endpoints
-	•	GET /health
-	•	GET /runs
-	•	POST /runs
-	•	GET /runs/{id}
-	•	POST /analyze-pr
-	•	POST /generate-patch
-	•	POST /comment-review
-	•	POST /open-fix-pr
+•	GET /health
+•	GET /runs
+•	POST /runs
+•	GET /runs/{id}
+•	POST /analyze-pr
+•	POST /generate-patch
+•	POST /comment-review
+•	POST /open-fix-pr
 
 ⸻
 
 Requirements
 
 Backend (backend/requirements.txt)
-	•	fastapi==0.115.0
-	•	uvicorn[standard]==0.30.6
-	•	python-dotenv==1.0.1
-	•	httpx==0.27.2
-	•	pydantic==2.8.2
-	•	sqlalchemy==2.0.32
+•	fastapi==0.115.0
+•	uvicorn[standard]==0.30.6
+•	python-dotenv==1.0.1
+•	httpx==0.27.2
+•	pydantic==2.8.2
+•	sqlalchemy==2.0.32
 
 Frontend (frontend/package.json)
-	•	React ^19.2.0
-	•	React DOM ^19.2.0
-	•	Vite ^7.3.1
-	•	TailwindCSS ^3.4.17
+•	React ^19.2.0
+•	React DOM ^19.2.0
+•	Vite ^7.3.1
+•	TailwindCSS ^3.4.17
 
 ⸻
 
 Core Requirement Alignment
-	•	✅ Hero technologies theme alignment: Agentic DevOps workflow
-	•	✅ Azure deployment: Backend deployable on Azure Container Apps
-	•	✅ GitHub-based development: Public repo + PR-based demo workflow
-	•	✅ Copilot-friendly implementation path: Codebase structured for VS Code + GitHub workflow
+•	✅ Hero technologies theme alignment: Agentic DevOps workflow
+•	✅ Azure deployment: Backend deployable on Azure Container Apps
+•	✅ GitHub-based development: Public repo + PR-based demo workflow
+•	✅ Copilot-friendly implementation path: Codebase structured for VS Code + GitHub workflow
 
 ⸻
 
 Current Limitations (Transparent Notes)
-	•	Reviewer is currently heuristics-based (baseline), not LLM-powered yet
-	•	Patch generation is demo-safe for targeted patterns
-	•	Language/framework-specific patching can be expanded in future versions
+•	Reviewer is currently heuristics-based (baseline), not LLM-powered yet
+•	Patch generation is demo-safe for targeted patterns
+•	Language/framework-specific patching can be expanded in future versions
 
 ⸻
 
 Roadmap (Next Improvements)
-	•	LLM-based reviewer for higher precision
-	•	Language-aware patch generation
-	•	SARIF export / security scan format support
-	•	GitHub App auth (instead of PAT for production)
-	•	Role-based dashboards for team triage
-	•	CI/CD integration (GitHub Actions / Azure DevOps)
+•	LLM-based reviewer for higher precision
+•	Language-aware patch generation
+•	SARIF export / security scan format support
+•	GitHub App auth (instead of PAT for production)
+•	Role-based dashboards for team triage
+•	CI/CD integration (GitHub Actions / Azure DevOps)
 
 ⸻
 
 Security Notes
-	•	Never commit backend/.env
-	•	Use Azure Container App secrets for GITHUB_TOKEN
-	•	Rotate tokens immediately if exposed in any PR or commit
+•	Never commit backend/.env
+•	Use Azure Container App secrets for GITHUB_TOKEN
+•	Rotate tokens immediately if exposed in any PR or commit
 
 ⸻
 
 Contributing
 
 This project was built as a hackathon prototype. Feedback, issues, and improvements are welcome.
-	•	LinkedIn: https://www.linkedin.com/in/mohammed10vir
+•	LinkedIn: https://www.linkedin.com/in/mohammed10vir
 
 ⸻
 
@@ -329,4 +329,5 @@ Final Note
 PR Doctor is designed as a practical, real-world developer productivity and code safety assistant.
 
 Thank you for helping make PR Doctor better.
+
 ⸻
