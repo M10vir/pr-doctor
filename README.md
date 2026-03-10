@@ -25,6 +25,7 @@ In modern engineering, code reviews are often the bottleneck. Busy reviewers mig
 - **Agentic Healing:** Generates a safe patch (`unified diff`) and opens an **auto-fix PR**. [cite: 3]
 - **Instant Feedback:** Posts structured review comments directly on the GitHub PR. [cite: 3]
 - **Run History:** Tracks every analysis in a DB-backed dashboard. [cite: 3]
+- **Tech Stack:** Built and refined in VS Code with GitHub Copilot assistance for code refactoring, error handling improvements, and documentation polish. [cite: 3]
 
 ---
 
