@@ -159,4 +159,8 @@ az containerapp secret set -n pr-doctor-api -g pr-doctor-rg --secrets github-tok
 This project is licensed under the **MIT License**.
 Built with 🩺 for the DevOps community.
 
-**LinkedIn:** [Mohammed10vir](https://www.linkedin.com/in/mohammed10vir)
+<p align="center">
+  <a href="https://www.linkedin.com/in/mohammed10vir">
+    <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Mohammed%20Tanvir-0A66C2?logo=linkedin&logoColor=white" />
+  </a>
+</p>
