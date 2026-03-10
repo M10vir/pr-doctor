@@ -68,17 +68,27 @@ export default function App() {
   };
 
   const loadRuns = async () => {
-    const r = await fetch(`${API_BASE}/runs`);
-    const data = await r.json();
-    setRuns(data);
-    if (!selectedRunId && data?.[0]?.id) setSelectedRunId(data[0].id);
+    try {
+      const r = await fetch(`${API_BASE}/runs`);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = await r.json();
+      setRuns(data);
+      if (!selectedRunId && data?.[0]?.id) setSelectedRunId(data[0].id);
+    } catch (error) {
+      showToast("Failed to load runs: " + error.message);
+    }
   };
 
   const loadRun = async (id) => {
     if (!id) return;
-    const r = await fetch(`${API_BASE}/runs/${id}`);
-    const data = await r.json();
-    setRunDetail(data);
+    try {
+      const r = await fetch(`${API_BASE}/runs/${id}`);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = await r.json();
+      setRunDetail(data);
+    } catch (error) {
+      showToast("Failed to load run details: " + error.message);
+    }
   };
 
   useEffect(() => { loadRuns(); }, []);
@@ -98,6 +108,8 @@ export default function App() {
       setSelectedRunId(data.run_id);
       showToast(`Run #${data.run_id} created`);
       return data.run_id;
+    } catch (error) {
+      showToast("Failed to create run: " + error.message);
     } finally {
       setBusy(false);
     }
@@ -116,6 +128,9 @@ export default function App() {
       await loadRuns();
       if (payload.run_id) await loadRun(payload.run_id);
       return data;
+    } catch (error) {
+      showToast("Action failed: " + error.message);
+      throw error; // Re-throw to prevent further execution if needed
     } finally {
       setBusy(false);
     }
