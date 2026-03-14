@@ -191,8 +191,8 @@ npm run dev
 ## ☁️ Azure Deployment
 
 ### Option A (Recommended): Deploy from source (No Docker required) 
+#### Backend: Azure Container Apps
 ```bash
--> **Backend: Azure Container Apps**
 export RG="pr-doctor-rg"
 export LOC="eastus"
 export ENV="pr-doctor-env"
