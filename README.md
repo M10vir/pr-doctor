@@ -58,6 +58,15 @@ In real engineering teams, code review often becomes a bottleneck: reviewers are
 
 ---
 
+## Screenshots / Proof
+See `/screenshots`:
+- UI workflow (Analyze → Patch → Comment → Fix PR)
+- GitHub comment proof
+- GitHub auto-fix PR proof
+- VS Code + Copilot evidence
+
+---
+
 ## End-to-End Flow
 
 1. **Create Run** (store PR URL + status in DB)
