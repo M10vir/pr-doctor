@@ -169,9 +169,10 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python -m uvicorn app.main:app --reload --port 8000
-```
+
 # Test backend health
 curl -s http://localhost:8000/health
+```
 
 ### **2. Frontend (React + Vite)**
 Navigate to `frontend/`, set your API base URL, and start the dev server.
@@ -189,9 +190,9 @@ npm run dev
 
 ## ☁️ Azure Deployment
 
-# Option A (Recommended): Deploy from source (No Docker required) 
-### **Backend: Azure Container Apps**
+### Option A (Recommended): Deploy from source (No Docker required) 
 ```bash
+-> **Backend: Azure Container Apps**
 export RG="pr-doctor-rg"
 export LOC="eastus"
 export ENV="pr-doctor-env"
@@ -207,16 +208,14 @@ az containerapp up \
   --source ./backend \
   --ingress external \
   --target-port 8000
-```
-# Get the public URL:
-```bash
+
+# 1. Get the public URL:
 export API_FQDN=$(az containerapp show -n $APP -g $RG --query "properties.configuration.ingress.fqdn" -o tsv)
 export API_URL="https://$API_FQDN"
 echo $API_URL
 curl -i -L $API_URL/health
-```
-# Set secrets/env vars:
-```bash
+
+# 2. Set secrets/env vars:
 az containerapp secret set \
   -n $APP -g $RG \
   --secrets github-token="<PASTE_GITHUB_PAT>"
@@ -228,7 +227,7 @@ az containerapp update \
     ALLOWED_ORIGINS="http://localhost:5173,http://localhost:4173"
 ```
 
-## Option B: Deploy using ACR image (Requires Docker/ACR)
+### Option B: Deploy using ACR image (Requires Docker/ACR)
 ```bash
 export ACR_NAME="prdoctoracr$RANDOM"
 az acr create -g $RG -n $ACR_NAME --sku Basic
@@ -245,9 +244,8 @@ az containerapp create \
   --ingress external
 ```
 ### Frontend Deploy — Azure Static Web Apps (SWA)
-
-# 1. Build frontend with production API base:
 ```bash
+# 1. Build frontend with production API base:
 cd frontend
 cat > .env.production <<EOF
 VITE_API_BASE=https://pr-doctor-api.graysand-a8a616d5.eastus.azurecontainerapps.io
@@ -255,17 +253,13 @@ EOF
 
 npm install
 npm run build
-```
 
 # 2. Deploy to Azure Static Web Apps:
-```bash
 az staticwebapp create -n pr-doctor-ui -g pr-doctor-rg -l eastus2
 npm i -g @azure/static-web-apps-cli
 swa deploy ./dist --env production --app-name pr-doctor-ui --resource-group pr-doctor-rg
-```
 
 # 3. Update backend CORS:
-```bash
 az containerapp update \
   -n pr-doctor-api \
   -g pr-doctor-rg \
